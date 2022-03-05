@@ -8,16 +8,15 @@ import ru.ch.airport.dto.AircraftDto;
 import ru.ch.airport.dto.AirportDto;
 import ru.ch.airport.dto.PrimeAircraftDto;
 import ru.ch.airport.service.aircraft.AircraftService;
-import ru.ch.airport.service.aircraft.AircraftServiceIml;
 
 @SpringBootTest
 public class AirportControllerTest {
-    private AirportController airportController = new AirportController();
-    private AircraftService aircraftService = new AircraftServiceIml();
+    private AirportController airportController;
+    private AircraftService aircraftService;
 
     @Test
     public void testAirport() {
-        AirportDto airportDtoVar = airportController.airports();
+        AirportDto airportDtoVar = airportController.airports().get(0);
         Assertions.assertNotNull(airportDtoVar.getCode());
         Assertions.assertEquals("San-Diego", airportDtoVar.getName());
     }

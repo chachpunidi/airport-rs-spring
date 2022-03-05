@@ -1,1 +1,7 @@
-
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/demo
+    username: aircraft_user
+    password: aircraft_user
+    driverClassName: org.postgresql.Driver

@@ -10,7 +10,6 @@ public interface AircraftService {
      */
     AircraftDto aircraft();
 
-
     AircraftDto aircraft1();
 
     AircraftDto aircraft2();

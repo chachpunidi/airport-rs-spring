@@ -7,7 +7,7 @@ import ru.ch.airport.dto.PrimeAircraftDto;
 public class AircraftServiceIml implements AircraftService {
     @Override
     public AircraftDto aircraft() {
-        AircraftDto rt =new AircraftDto();
+        AircraftDto rt = new AircraftDto();
         rt.setCode("001");
         rt.setManufacturer("Boeing");
         rt.setModel("767");
