@@ -1,7 +1,7 @@
 spring:
   datasource:
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/demo
-    username: aircraft_user
-    password: aircraft_user
+    url: jdbc:postgresql://localhost:5432/demo?currentSchema=bookings
+    username: postgres
+    password: postgres
     driverClassName: org.postgresql.Driver

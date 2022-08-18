@@ -2,8 +2,7 @@ package ru.ch.airport.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.ch.airport.dto.AircraftDto;
 import ru.ch.airport.dto.AirportDto;
 import ru.ch.airport.service.aircraft.AircraftService;
@@ -12,36 +11,41 @@ import ru.ch.airport.service.airport.AirportService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/airports")
 public class AirportController {
 
     private AirportService airportService;
-    private AircraftService aircraftService;
 
     @Autowired
-    private ApplicationContext applicationContext;
-
-
-    @Autowired
-    public AirportController(AirportService airportService, AircraftService aircraftService) {
+    public AirportController(AirportService airportService) {
         this.airportService = airportService;
-        this.aircraftService = aircraftService;
     }
 
-    @GetMapping("/airports")
+    @GetMapping
     public List<AirportDto> airports() {
-        return airportService.airports();
+        return airportService.findAirports();
     }
 
-    @GetMapping("/aircraft")
-    public AircraftDto aircraft() {
-        return aircraftService.aircraft();
+    @GetMapping("/{code}")
+    public AirportDto airport(@PathVariable(value = "code") String code) {
+        return airportService.findAirport(code);
     }
 
-    public AircraftDto aircraft1() {
-        return aircraftService.aircraft1();
+    @PutMapping
+    public Integer createAirport(@RequestBody AirportDto airport) {
+        return airportService.createAirport(airport);
+    }
+    @PostMapping("/batch")
+    public Integer createAirports(@RequestBody List<AirportDto> airports) {
+        return airportService.createAirports(airports);
+    }
+    @DeleteMapping("/{code}")
+    public Integer deleteAirport(@PathVariable(value = "code") String code) {
+        return airportService.deleteAirport(code);
+    }
+    @PatchMapping("/{code}")
+    public Integer updateAirport(@PathVariable(value = "code") String code, @RequestBody AirportDto airport) {
+        return airportService.updateAirport(code, airport);
     }
 
-    public AircraftDto aircraft2() {
-        return aircraftService.aircraft2(); //rt
-    }
 }

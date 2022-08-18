@@ -1,20 +1,21 @@
 package ru.ch.airport.service.aircraft;
 
 import ru.ch.airport.dto.AircraftDto;
-import ru.ch.airport.dto.PrimeAircraftDto;
+
+import java.util.List;
 
 public interface AircraftService {
-    /**
-     * Получить самолеты.
-     * @return самолеты
-     */
-    AircraftDto aircraft();
 
-    AircraftDto aircraft1();
+    List<AircraftDto> findAircrafts();
 
-    AircraftDto aircraft2();
+    AircraftDto findAircraft(String code);
 
-    boolean hasAircrafts();
+    Integer createAircraft(AircraftDto aircraft);
+    Integer createAircrafts(List<AircraftDto> aircrafts);
 
-    PrimeAircraftDto getPrimeAircraft();
+    Integer updateAircraft(String code, AircraftDto aircraft);
+
+    Integer deleteAircraft(String code);
+
+
 }

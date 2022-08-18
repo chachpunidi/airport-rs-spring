@@ -1,11 +1,12 @@
 package ru.ch.airport.dto;
 
+
 public class AircraftDto {
 
     private String code;
     private String manufacturer;
     private String model;
-    private long places;
+    private Long range;
 
 
     public String getManufacturer() {
@@ -21,7 +22,6 @@ public class AircraftDto {
     }
 
     public void setCode(String code) {
-
         this.code = code;
     }
 
@@ -32,10 +32,23 @@ public class AircraftDto {
     public void setModel(String model) {
         this.model = model;
     }
-    public void setPlaces(long places) {
-        this.places = places;
+
+
+    public Long getRange() {
+        return range;
     }
 
-    public long getPlaces() {return places;
+    public void setRange(Long range) {
+        this.range = range;
+    }
+
+    @Override
+    public String toString() {
+        return "AircraftDto{" +
+                "code='" + code + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", range=" + range +
+                '}';
     }
 }
